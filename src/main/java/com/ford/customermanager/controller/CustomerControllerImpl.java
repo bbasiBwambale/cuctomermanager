@@ -2,7 +2,6 @@ package com.ford.customermanager.controller;
 
 import com.ford.customermanager.domain.Customer;
 import com.ford.customermanager.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +10,12 @@ import java.util.UUID;
 
 @RestController
 public class CustomerControllerImpl implements CustomerController{
-    @Autowired
-    CustomerService customerService;
+
+    private CustomerService customerService;
+
+    public CustomerControllerImpl(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @Override
     @GetMapping("/customers")
@@ -43,5 +46,4 @@ public class CustomerControllerImpl implements CustomerController{
     public void deleteCustomer(@PathVariable UUID customerId) {
         customerService.deleteCustomer(customerId);
     }
-
 }

@@ -2,10 +2,12 @@ package com.ford.customermanager.service;
 
 import com.ford.customermanager.domain.Customer;
 import com.ford.customermanager.repository.CustomerRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class CustomerServiceImpl implements CustomerService{
     private CustomerRepository customerRepository;
     @Override
